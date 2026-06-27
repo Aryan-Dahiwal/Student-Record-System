@@ -1,33 +1,29 @@
 #include <stdio.h>
-
-struct Student {
-    char name[50];
-    long long roll;  
-    float marks;
-};
-
-void printStudent(struct Student s) {
-    printf("Name: %s\n", s.name);
-    printf("Roll: %lld\n", s.roll);  
-    printf("Marks: %.2f\n", s.marks);
-    printf("----------\n");
-}
+#include "student.h"
 
 int main() {
-    struct Student s1;
-    
-    printf("Enter name: ");
-    scanf("%s", s1.name);
-    
-    printf("Enter roll number: ");
-    scanf("%lld", &s1.roll);  
-    
-    printf("Enter marks: ");
-    scanf("%f", &s1.marks);
-    
-    printf("\n--- Student Record ---\n");
-    
-    printStudent(s1);
-    
+    Student* head = NULL;
+    int choice;
+
+    while (1) {
+        printf("\n===== Student Record System =====\n");
+        printf("1. Add Student\n");
+        printf("2. Display All Students\n");
+        printf("3. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 1) {
+            addStudent(&head);
+        } else if (choice == 2) {
+            displayAll(head);
+        } else if (choice == 3) {
+            printf("Goodbye!\n");
+            break;
+        } else {
+            printf("Invalid choice.\n");
+        }
+    }
+
     return 0;
 }

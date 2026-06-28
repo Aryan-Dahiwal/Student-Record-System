@@ -58,3 +58,38 @@ void searchByRoll(Student* head) {
     }
     printf("Student with roll %lld not found.\n", roll);
 }
+
+void deleteByRoll(Student** head) {
+    long long roll;
+    printf("Enter roll number to delete: ");
+    scanf("%lld", &roll);
+
+    if (*head == NULL) {
+        printf("No records found.\n");
+        return;
+    }
+
+    
+    if ((*head)->roll == roll) {
+        Student* temp = *head;
+        *head = (*head)->next;
+        free(temp);
+        printf("Student deleted successfully.\n");
+        return;
+    }
+
+    
+    Student* prev = *head;
+    Student* curr = (*head)->next;
+    while (curr != NULL) {
+        if (curr->roll == roll) {
+            prev->next = curr->next;
+            free(curr);
+            printf("Student deleted successfully.\n");
+            return;
+        }
+        prev = curr;
+        curr = curr->next;
+    }
+    printf("Student with roll %lld not found.\n", roll);
+}

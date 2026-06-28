@@ -10,7 +10,8 @@ int main() {
         printf("1. Add Student\n");
         printf("2. Display All Students\n");
         printf("3. Search Student\n");
-        printf("4. Exit\n");
+        printf("4. Delete Student\n");
+        printf("5. Exit\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
 
@@ -21,6 +22,8 @@ int main() {
         } else if (choice == 3) {
             searchByRoll(head);
         } else if (choice == 4) {
+            deleteByRoll(&head);
+        } else if (choice == 5) {
             printf("Goodbye!\n");
             break;
         }

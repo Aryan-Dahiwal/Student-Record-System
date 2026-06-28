@@ -39,3 +39,22 @@ void displayAll(Student* head) {
         temp = temp->next;
     }
 }
+
+void searchByRoll(Student* head) {
+    long long roll;
+    printf("Enter roll number to search: ");
+    scanf("%lld", &roll);
+
+    Student* temp = head;
+    while (temp != NULL) {
+        if (temp->roll == roll) {
+            printf("Student found:\n");
+            printf("Name: %s\n", temp->name);
+            printf("Roll: %lld\n", temp->roll);
+            printf("Marks: %.2f\n", temp->marks);
+            return;
+        }
+        temp = temp->next;
+    }
+    printf("Student with roll %lld not found.\n", roll);
+}

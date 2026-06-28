@@ -9,7 +9,8 @@ int main() {
         printf("\n===== Student Record System =====\n");
         printf("1. Add Student\n");
         printf("2. Display All Students\n");
-        printf("3. Exit\n");
+        printf("3. Search Student\n");
+        printf("4. Exit\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
 
@@ -18,9 +19,12 @@ int main() {
         } else if (choice == 2) {
             displayAll(head);
         } else if (choice == 3) {
+            searchByRoll(head);
+        } else if (choice == 4) {
             printf("Goodbye!\n");
             break;
-        } else {
+        }
+         else {
             printf("Invalid choice.\n");
         }
     }

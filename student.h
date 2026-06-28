@@ -10,5 +10,5 @@ typedef struct Student {
 
 void addStudent(Student** head);
 void displayAll(Student* head);
-
+void searchByRoll(Student* head);
 #endif

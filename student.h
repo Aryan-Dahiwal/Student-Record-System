@@ -12,4 +12,5 @@ void addStudent(Student** head);
 void displayAll(Student* head);
 void searchByRoll(Student* head);
 void deleteByRoll(Student** head);
+void sortByMarks(Student* head);
 #endif

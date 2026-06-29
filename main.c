@@ -11,23 +11,25 @@ int main() {
         printf("2. Display All Students\n");
         printf("3. Search Student\n");
         printf("4. Delete Student\n");
-        printf("5. Exit\n");
+        printf("5. Sort by Marks\n");
+        printf("6. Exit\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
 
         if (choice == 1) {
             addStudent(&head);
         } else if (choice == 2) {
-            displayAll(head);
+           displayAll(head);
         } else if (choice == 3) {
             searchByRoll(head);
         } else if (choice == 4) {
             deleteByRoll(&head);
         } else if (choice == 5) {
+            sortByMarks(head);
+        } else if (choice == 6) {
             printf("Goodbye!\n");
-            break;
-        }
-         else {
+        break;
+        } else {
             printf("Invalid choice.\n");
         }
     }

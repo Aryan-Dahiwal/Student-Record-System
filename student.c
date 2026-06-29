@@ -93,3 +93,43 @@ void deleteByRoll(Student** head) {
     }
     printf("Student with roll %lld not found.\n", roll);
 }
+
+void sortByMarks(Student* head) {
+    if (head == NULL) return;
+
+    int swapped;
+    Student* ptr;
+    char tempName[50];
+    long long tempRoll;
+    float tempMarks;
+
+    do {
+        swapped = 0;
+        ptr = head;
+
+        while (ptr->next != NULL) {
+            if (ptr->marks > ptr->next->marks) {
+                // swap data between nodes
+                // swap marks
+                tempMarks = ptr->marks;
+                ptr->marks = ptr->next->marks;
+                ptr->next->marks = tempMarks;
+
+                // swap roll
+                tempRoll = ptr->roll;
+                ptr->roll = ptr->next->roll;
+                ptr->next->roll = tempRoll;
+
+                // swap name
+                strcpy(tempName, ptr->name);
+                strcpy(ptr->name, ptr->next->name);
+                strcpy(ptr->next->name, tempName);
+
+                swapped = 1;
+            }
+            ptr = ptr->next;
+        }
+    } while (swapped);
+
+    printf("Students sorted by marks (lowest to highest).\n");
+}

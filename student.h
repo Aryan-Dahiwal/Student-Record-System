@@ -13,4 +13,6 @@ void displayAll(Student* head);
 void searchByRoll(Student* head);
 void deleteByRoll(Student** head);
 void sortByMarks(Student* head);
+void saveToFile(Student* head);
+void loadFromFile(Student** head);
 #endif

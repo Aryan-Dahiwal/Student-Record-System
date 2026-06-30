@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "student.h"
 
 void addStudent(Student** head) {
@@ -132,4 +133,52 @@ void sortByMarks(Student* head) {
     } while (swapped);
 
     printf("Students sorted by marks (lowest to highest).\n");
+}
+
+void saveToFile(Student* head) {
+    FILE* file = fopen("students.txt", "w");
+    if (file == NULL) {
+        printf("Error opening file for writing.\n");
+        return;
+    }
+
+    Student* temp = head;
+    while (temp != NULL) {
+        fprintf(file, "%s %lld %.2f\n", temp->name, temp->roll, temp->marks);
+        temp = temp->next;
+    }
+
+    fclose(file);
+    printf("Records saved to file.\n");
+}
+
+void loadFromFile(Student** head) {
+    FILE* file = fopen("students.txt", "r");
+    if (file == NULL) {
+        printf("No existing records found.\n");
+        return;
+    }
+
+    char name[50];
+    long long roll;
+    float marks;
+
+    while (fscanf(file, "%s %lld %f", name, &roll, &marks) == 3) {
+        Student* newStudent = (Student*)malloc(sizeof(Student));
+        strcpy(newStudent->name, name);
+        newStudent->roll = roll;
+        newStudent->marks = marks;
+        newStudent->next = NULL;
+
+        if (*head == NULL) {
+            *head = newStudent;
+        } else {
+            Student* curr = *head;
+            while (curr->next != NULL) curr = curr->next;
+            curr->next = newStudent;
+        }
+    }
+
+    fclose(file);
+    printf("Records loaded from file.\n");
 }

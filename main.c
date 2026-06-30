@@ -4,6 +4,7 @@
 int main() {
     Student* head = NULL;
     int choice;
+    loadFromFile(&head);
 
     while (1) {
         printf("\n===== Student Record System =====\n");
@@ -27,6 +28,7 @@ int main() {
         } else if (choice == 5) {
             sortByMarks(head);
         } else if (choice == 6) {
+            saveToFile(head);
             printf("Goodbye!\n");
         break;
         } else {
